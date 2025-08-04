@@ -60,6 +60,10 @@
         .scroll-smooth {
             scroll-behavior: smooth;
         }
+        /* Tailwind custom height class for iframe */
+        .h-\[500px\] {
+            height: 500px;
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 scroll-smooth pattern-bg">
@@ -86,18 +90,52 @@
                 </p>
                 <!-- Event Image -->
                 <div class="mb-8 max-w-4xl mx-auto">
-                    <!-- Primary method -->
-                    <img src="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73" 
-                         alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
-                         class="w-full rounded-xl shadow-2xl hover-card"
-                         loading="lazy"
-                         onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&sz=w1000';">
-                    <!-- Alternative iframe method (hidden by default) -->
+                    <!-- Multiple image sources with fallback -->
+                    <picture>
+                        <!-- Try lh5.googleusercontent first -->
+                        <source srcset="https://lh5.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73">
+                        <!-- Try direct Google Drive view -->
+                        <source srcset="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73">
+                        <!-- Try thumbnail version -->
+                        <source srcset="https://drive.google.com/thumbnail?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&sz=w1600">
+                        <!-- Main img tag with proxy service as fallback -->
+                        <img src="https://lh3.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73=w1600" 
+                             alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
+                             class="w-full rounded-xl shadow-2xl hover-card event-main-image"
+                             loading="lazy"
+                             id="mainEventImage"
+                             onerror="showDrivePreview()">
+                    </picture>
+                    <!-- Google Drive iframe as final fallback -->
                     <iframe src="https://drive.google.com/file/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73/preview" 
-                            class="w-full h-96 rounded-xl shadow-2xl hover-card hidden"
+                            class="w-full h-[500px] rounded-xl shadow-2xl hover-card hidden"
                             id="drivePreview"
+                            allow="autoplay"
                             frameborder="0">
                     </iframe>
+                    <!-- Loading indicator -->
+                    <div id="imageLoader" class="w-full h-96 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl shadow-2xl flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mb-4"></div>
+                            <p class="text-gray-600 dark:text-gray-400">กำลังโหลดภาพ...</p>
+                        </div>
+                    <!-- Manual upload option -->
+                    <div class="mt-4 text-center">
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">หรือเลือกภาพจากอุปกรณ์ของคุณ:</p>
+                        <input type="file" 
+                               id="imageUpload" 
+                               accept="image/*" 
+                               class="hidden"
+                               onchange="handleLocalImage(event)">
+                        <label for="imageUpload" 
+                               class="inline-block bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-4 py-2 rounded-lg cursor-pointer transition-colors duration-300">
+                            <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            อัพโหลดภาพ
+                        </label>
+                    </div>
+                    </div>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
                     <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover-card">
@@ -273,45 +311,18 @@
     <section class="py-16 bg-gray-50 dark:bg-gray-900">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-center mb-12 gradient-text">ภาพบรรยากาศย่านบางพลัด</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="max-w-5xl mx-auto">
                 <!-- Main Event Image -->
-                <div class="col-span-1 md:col-span-2 lg:col-span-3">
-                    <img src="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73" 
-                         alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
-                         class="w-full h-96 object-cover rounded-xl shadow-lg hover-card"
-                         loading="lazy"
-                         onerror="this.onerror=null; this.src='https://drive.google.com/thumbnail?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&sz=w1000';">
-                </div>
-                <!-- Placeholder for additional images -->
-                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
-                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                        <div class="text-center">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <p>วัดเปาโรหิตย์</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
-                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                        <div class="text-center">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <p>ตลาดกรุงธน</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
-                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                        <div class="text-center">
-                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <p>กิจกรรมชุมชน</p>
-                        </div>
-                    </div>
+                <div class="w-full">
+                    <picture>
+                        <source srcset="https://lh5.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73">
+                        <source srcset="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73">
+                        <img src="https://lh3.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73=w1600" 
+                             alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
+                             class="w-full h-96 object-cover rounded-xl shadow-lg hover-card event-gallery-image"
+                             loading="lazy"
+                             onerror="handleImageError(this)">
+                    </picture>
                 </div>
             </div>
             <div class="text-center mt-8">
@@ -321,6 +332,16 @@
                 <button onclick="showAlternativeImage()" class="text-purple-600 hover:text-purple-800 underline text-sm">
                     ภาพไม่แสดง? คลิกที่นี่
                 </button>
+                <div class="mt-4">
+                    <a href="https://drive.google.com/file/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73/view" 
+                       target="_blank" 
+                       class="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                        ดูภาพต้นฉบับใน Google Drive
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -403,30 +424,99 @@
             window.open(googleCalUrl, '_blank');
         }
 
+        // Show Drive preview when image fails
+        function showDrivePreview() {
+            const preview = document.getElementById('drivePreview');
+            const loader = document.getElementById('imageLoader');
+            if (preview && loader) {
+                loader.style.display = 'none';
+                preview.classList.remove('hidden');
+            }
+        }
+
         // Check if images are loading properly
         window.addEventListener('load', () => {
-            const images = document.querySelectorAll('img[src*="drive.google.com"]');
-            images.forEach(img => {
-                // Add click event to show iframe preview if image fails
-                img.addEventListener('error', function() {
-                    console.log('Trying alternative display method...');
-                    const iframe = document.getElementById('drivePreview');
-                    if (iframe && this.parentElement.contains(iframe)) {
-                        iframe.classList.remove('hidden');
-                        this.style.display = 'none';
-                    }
-                });
-            });
+            const mainImage = document.getElementById('mainEventImage');
+            const loader = document.getElementById('imageLoader');
+            const preview = document.getElementById('drivePreview');
+            
+            // Image loading with multiple fallbacks
+            const imageSources = [
+                'https://lh5.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73',
+                'https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73',
+                'https://drive.google.com/thumbnail?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&sz=w1600',
+                'https://lh3.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73=w1600'
+            ];
+            
+            let currentIndex = 0;
+            
+            function tryNextImage() {
+                if (currentIndex < imageSources.length) {
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        mainImage.src = this.src;
+                        mainImage.style.display = 'block';
+                        loader.style.display = 'none';
+                        preview.style.display = 'none';
+                    };
+                    testImg.onerror = function() {
+                        currentIndex++;
+                        tryNextImage();
+                    };
+                    testImg.src = imageSources[currentIndex];
+                } else {
+                    // All image sources failed, show iframe
+                    loader.style.display = 'none';
+                    mainImage.style.display = 'none';
+                    preview.classList.remove('hidden');
+                }
+            }
+            
+            // Start trying to load images
+            setTimeout(tryNextImage, 100);
+            
+            // Hide loader after image loads
+            mainImage.onload = function() {
+                loader.style.display = 'none';
+            };
         });
+
+        // Handle image errors in gallery
+        function handleImageError(img) {
+            const sources = [
+                'https://drive.google.com/thumbnail?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&sz=w1000',
+                'https://lh4.googleusercontent.com/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73',
+                'https://drive.google.com/uc?id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73&export=download'
+            ];
+            
+            if (!img.dataset.tryCount) {
+                img.dataset.tryCount = 0;
+            }
+            
+            if (img.dataset.tryCount < sources.length) {
+                img.src = sources[img.dataset.tryCount];
+                img.dataset.tryCount++;
+            }
+        }
 
         // Show alternative image display
         function showAlternativeImage() {
-            alert(`หากภาพไม่แสดง กรุณา:
-1. เปิดลิงก์นี้: https://drive.google.com/file/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73/view
-2. คลิกขวาที่ภาพ → "เปิดรูปภาพในแท็บใหม่"
-3. คัดลอก URL จากแท็บใหม่มาใส่ในโค้ด
-
-หรือติดต่อผู้จัดงานเพื่อขอภาพประกอบ`);
+            const preview = document.getElementById('drivePreview');
+            const mainImage = document.getElementById('mainEventImage');
+            const loader = document.getElementById('imageLoader');
+            
+            if (preview) {
+                mainImage.style.display = 'none';
+                loader.style.display = 'none';
+                preview.classList.remove('hidden');
+            }
+            
+            alert(`กำลังแสดงภาพแบบ Preview Mode
+            
+หากยังไม่เห็นภาพ:
+1. เปิด: https://drive.google.com/file/d/1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73/view
+2. ตรวจสอบการตั้งค่าแชร์เป็น "ผู้ที่มีลิงก์ทุกคน"
+3. หรือใช้บริการฝากภาพฟรีเช่น postimages.org, imgur.com`);
         }
 
         // Add intersection observer for animations
@@ -447,6 +537,33 @@
         document.querySelectorAll('.activity-card, .hover-card').forEach(card => {
             observer.observe(card);
         });
+
+        // Handle local image upload
+        function handleLocalImage(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const mainImage = document.getElementById('mainEventImage');
+                    const loader = document.getElementById('imageLoader');
+                    const preview = document.getElementById('drivePreview');
+                    
+                    if (mainImage) {
+                        mainImage.src = e.target.result;
+                        mainImage.style.display = 'block';
+                        if (loader) loader.style.display = 'none';
+                        if (preview) preview.style.display = 'none';
+                    }
+                    
+                    // Also update gallery image
+                    const galleryImages = document.querySelectorAll('.event-gallery-image');
+                    if (galleryImages.length > 0) {
+                        galleryImages[0].src = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
         // Add parallax effect on scroll
         window.addEventListener('scroll', () => {
