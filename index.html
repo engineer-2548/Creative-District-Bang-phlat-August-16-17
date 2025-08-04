@@ -84,6 +84,19 @@
                 <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
                     กิจกรรมย่านสร้างสรรค์ ย่านบางยี่ขันและย่านบางบำหรุ
                 </p>
+                <!-- Event Image -->
+                <div class="mb-8 max-w-4xl mx-auto">
+                    <img src="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73" 
+                         alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
+                         class="w-full rounded-xl shadow-2xl hover-card"
+                         onerror="this.style.display='none'; document.getElementById('imageError').style.display='block';">
+                    <div id="imageError" class="hidden bg-gray-200 dark:bg-gray-700 rounded-xl p-20 text-gray-500 dark:text-gray-400">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <p>ภาพประกอบกิจกรรม</p>
+                    </div>
+                </div>
                 <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
                     <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover-card">
                         <p class="text-lg font-semibold text-purple-600 dark:text-purple-400">📅 วันที่</p>
@@ -250,6 +263,58 @@
                 <button onclick="addToCalendar()" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition-all duration-300">
                     เพิ่มในปฏิทิน
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">ภาพบรรยากาศย่านบางพลัด</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Main Event Image -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                    <img src="https://drive.google.com/uc?export=view&id=1WRrbA4BpNOvTKuy0bI6Gvt29pctZXo73" 
+                         alt="สีสันบางพลัด - ภาพประกอบกิจกรรม" 
+                         class="w-full h-96 object-cover rounded-xl shadow-lg hover-card"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'400\' viewBox=\'0 0 800 400\'%3E%3Crect width=\'800\' height=\'400\' fill=\'%23e5e7eb\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-family=\'Arial\' font-size=\'24\' fill=\'%236b7280\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3Eภาพประกอบกิจกรรม สีสันบางพลัด%3C/text%3E%3C/svg%3E'">
+                </div>
+                <!-- Placeholder for additional images -->
+                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
+                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <p>วัดเปาโรหิตย์</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
+                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <p>ตลาดกรุงธน</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden hover-card">
+                    <div class="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <p>กิจกรรมชุมชน</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <p class="text-gray-600 dark:text-gray-400">
+                    📸 หากมีภาพเพิ่มเติม สามารถใส่ URL ของภาพในโค้ด HTML ได้
+                </p>
             </div>
         </div>
     </section>
