@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สีสันบางพลัด - ย่านสร้างสรรค์บางพลัด</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Charm:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Kanit', sans-serif;
+        }
+        .font-charm {
+            font-family: 'Charm', cursive;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #4c1d95 0%, #5b21b6 100%);
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .pulse-button {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
+        }
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .pattern-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 scroll-smooth pattern-bg">
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+        <svg id="sunIcon" class="w-6 h-6 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+        </svg>
+        <svg id="moonIcon" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 gradient-bg opacity-10"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center slide-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text font-charm float-animation">
+                    สีสันบางพลัด
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
+                    กิจกรรมย่านสร้างสรรค์ ย่านบางยี่ขันและย่านบางบำหรุ
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover-card">
+                        <p class="text-lg font-semibold text-purple-600 dark:text-purple-400">📅 วันที่</p>
+                        <p class="text-gray-700 dark:text-gray-300">16-17 สิงหาคม 2568</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover-card">
+                        <p class="text-lg font-semibold text-purple-600 dark:text-purple-400">📍 สถานที่</p>
+                        <p class="text-gray-700 dark:text-gray-300">วัดเปาโรหิตย์ และตลาดกรุงธน</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover-card">
+                        <p class="text-lg font-semibold text-purple-600 dark:text-purple-400">🎉 ค่าเข้าร่วม</p>
+                        <p class="text-gray-700 dark:text-gray-300">ฟรี!</p>
+                    </div>
+                </div>
+                <button onclick="scrollToHighlights()" class="gradient-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 pulse-button">
+                    ดูรายละเอียดกิจกรรม
+                </button>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">ไฮไลท์กิจกรรม</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Saturday Highlight -->
+                <div class="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-8 hover-card">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700 dark:text-purple-300">
+                        🎨 วันเสาร์ที่ 16 สิงหาคม
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        <span class="font-semibold">📍 ณ วัดเปาโรหิตย์ (จรัญฯ 62)</span>
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        ร่วมเวิร์คชอปการสร้างอัตลักษณ์ด้วยสีไทยโทน แบบโดนใจสายคอนเทนต์ 
+                        พร้อมเรียนรู้เทคนิคการใช้สีที่เป็นเอกลักษณ์ของไทย
+                    </p>
+                    <a href="https://forms.gle/iLVXkaU9GFjYVSBD6" target="_blank" 
+                       class="inline-block gradient-bg text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300">
+                        ลงทะเบียนเข้าร่วม
+                    </a>
+                </div>
+
+                <!-- Sunday Highlight -->
+                <div class="bg-green-50 dark:bg-green-900/20 rounded-xl p-8 hover-card">
+                    <h3 class="text-2xl font-bold mb-4 text-green-700 dark:text-green-300">
+                        🛍️ วันอาทิตย์ที่ 17 สิงหาคม
+                    </h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        <span class="font-semibold">📍 ณ ตลาดกรุงธน (ซังฮี้)</span>
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        ช้อปชิมของอร่อยที่ตลาดของดีชุมชน พบกับสินค้าท้องถิ่น
+                        อาหารพื้นบ้าน และผลิตภัณฑ์ชุมชนที่หาไม่ได้ที่อื่น
+                    </p>
+                    <div class="text-purple-600 dark:text-purple-400 font-semibold">
+                        พร้อมกิจกรรมต่อเนื่องทั้ง 2 วัน!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">กิจกรรมตลอดงาน</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">🎭</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">การแสดงวัฒนธรรม</h3>
+                    <p class="text-gray-600 dark:text-gray-400">ชมการแสดงศิลปวัฒนธรรมท้องถิ่น</p>
+                </div>
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">🎨</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">เสวนาจิตรกรรม</h3>
+                    <p class="text-gray-600 dark:text-gray-400">โดยตัวตึงเรื่องภาพจิตรกรรมในย่าน</p>
+                </div>
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">🌿</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">งานประดิษฐ์ใบเตย</h3>
+                    <p class="text-gray-600 dark:text-gray-400">เวิร์คชอปทำสินค้าที่ระลึกชุมชน</p>
+                </div>
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">🔑</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">พวงกุญแจกาบหมาก</h3>
+                    <p class="text-gray-600 dark:text-gray-400">สร้างสรรค์งานฝีมือจากวัสดุท้องถิ่น</p>
+                </div>
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">👺</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">หัตถกรรมหัวโขน</h3>
+                    <p class="text-gray-600 dark:text-gray-400">เรียนรู้ศิลปะการทำหัวโขนไทย</p>
+                </div>
+                <div class="activity-card bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover-card">
+                    <div class="text-3xl mb-4">📸</div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">ประกวดภาพถ่าย</h3>
+                    <p class="text-gray-600 dark:text-gray-400">ชิงรางวัลมากมาย</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">ลงทะเบียนเข้าร่วมกิจกรรม</h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-purple-700 dark:text-purple-300">
+                        🎨 สีสันบางพลัด สร้างอัตลักษณ์ด้วยไทยโทน
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">วันเสาร์ที่ 16 สิงหาคม 2568</p>
+                    <a href="https://forms.gle/iLVXkaU9GFjYVSBD6" target="_blank" 
+                       class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-300">
+                        ลงทะเบียน
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-xl p-6 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700 dark:text-blue-300">
+                        📸 บันทึกภาพย่านผ่านสถาปัตย์อัตลักษณ์
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">ส่งภาพประกวดถึงวันที่ 14 สิงหาคม 2568</p>
+                    <a href="https://forms.gle/QaMTfU9KPxy3qubK9" target="_blank" 
+                       class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        ส่งผลงาน
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-xl p-6 hover-card">
+                    <h3 class="text-xl font-semibold mb-3 text-green-700 dark:text-green-300">
+                        📅 ดูกำหนดการกิจกรรมทั้งหมด
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">การแสดง และกิจกรรมต่างๆ</p>
+                    <a href="https://forms.gle/qiDhJEsF5gxrXLZa9" target="_blank" 
+                       class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-300">
+                        ดูกำหนดการ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 font-charm">
+                รอคอยพี่ๆ เพื่อนๆ ทุกท่านมาร่วมกัน
+            </h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                หาความหมายของย่าน นำคุณค่าของวันวานมาสร้างประสบการณ์ใหม่ๆ 
+                ให้ทุกคนแฮปปี้ มีความทรงจำดีๆ กับวีคเอนด์นี้ร่วมกันครับ
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="shareEvent()" class="bg-white text-purple-700 px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300">
+                    แชร์กิจกรรม
+                </button>
+                <button onclick="addToCalendar()" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-purple-700 transition-all duration-300">
+                    เพิ่มในปฏิทิน
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">🏛️ ย่านสร้างสรรค์บางพลัด</p>
+            <p class="text-gray-400">แขวงบางยี่ขัน เขตบางพลัด กรุงเทพมหานคร</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            
+            if (isDark) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        });
+
+        // Smooth scroll to highlights
+        function scrollToHighlights() {
+            document.getElementById('highlights').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Share functionality
+        function shareEvent() {
+            const shareData = {
+                title: 'สีสันบางพลัด - กิจกรรมย่านสร้างสรรค์',
+                text: 'ขอเชิญร่วมงาน "สีสันบางพลัด" วันที่ 16-17 สิงหาคม 2568 ณ วัดเปาโรหิตย์ และตลาดกรุงธน เข้าร่วมกิจกรรมฟรี!',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Shared successfully'))
+                    .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback - copy to clipboard
+                const text = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('คัดลอกลิงก์เรียบร้อยแล้ว!');
+                });
+            }
+        }
+
+        // Add to calendar
+        function addToCalendar() {
+            const event = {
+                title: 'สีสันบางพลัด - กิจกรรมย่านสร้างสรรค์',
+                start: '20250816',
+                end: '20250818',
+                details: 'กิจกรรมย่านสร้างสรรค์ ย่านบางยี่ขันและย่านบางบำหรุ ณ วัดเปาโรหิตย์ และตลาดกรุงธน',
+                location: 'วัดเปาโรหิตย์ และตลาดกรุงธน แขวงบางยี่ขัน เขตบางพลัด กรุงเทพฯ'
+            };
+
+            const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&details=${encodeURIComponent(event.details)}&location=${encodeURIComponent(event.location)}`;
+            
+            window.open(googleCalUrl, '_blank');
+        }
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.activity-card, .hover-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.pattern-bg');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
